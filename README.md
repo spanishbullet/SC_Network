@@ -4,9 +4,9 @@ The networking program I provided is a basic chat application using a client-ser
 
 To use this software, you need to start both the server and the client. Here’s how:
 
-    Server: Run the server script on the machine that you want to act as the server. The server will start listening for incoming connections on port 5000. When a client connects, the server will start two threads: one for receiving messages from the client and another for sending messages to the client.
+Server: Run the server script on the machine that you want to act as the server. The server will start listening for incoming connections on port 5000. When a client connects, the server will start two threads: one for receiving messages from the client and another for sending messages to the client.
 
-    Client: Run the client script on the machine that you want to act as the client. The client will connect to the server using the server’s IP address and port number. Similar to the server, the client will also start two threads: one for receiving messages from the server and another for sending messages to the server.
+Client: Run the client script on the machine that you want to act as the client. The client will connect to the server using the server’s IP address and port number. Similar to the server, the client will also start two threads: one for receiving messages from the server and another for sending messages to the server.
 
 Once connected the server and client can send simple text back and forth by typing the desired text into the terminal and pressing enter. That text will apear in the terminal on the other end of the connection. Either the server or the client can type 'sendfile' and press enter to send a file. The user will be prompted to enter the file name and press enter. The file entered will be sent as text to the other end of the connection and will apear as a message and a new file will be created on the machine receiveing the file. Similairly either machine can type 'quit' and press enter. This will close the connection and notify the other end that the connection was terminated by the other machine.
 
