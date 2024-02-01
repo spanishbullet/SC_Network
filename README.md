@@ -12,9 +12,7 @@ Once connected the server and client can send simple text back and forth by typi
 
 The purpose of writing this software is to demonstrate a basic implementation of a chat application using a client-server model. It provides a simple way for two parties to communicate with each other over a network. The software also includes the ability to send files from one party to another. However, please note that this is a basic implementation and might not be suitable for a production environment. It lacks features like support for multiple clients, robust error handling, and security measures. If you plan to use this in a real-world application, you might want to consider adding these features.
 
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (you will need to show two pieces of software running and communicating with each other) and a walkthrough of the code.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://youtu.be/0T2o6kR-ZDQ)
 
 # Network Communication
 
