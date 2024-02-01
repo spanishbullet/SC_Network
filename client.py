@@ -15,7 +15,17 @@ def send_message(client_socket):
         if message.lower().strip() == 'exit':
             client_socket.send(message.encode())
             break
-        client_socket.send(message.encode())
+        elif message.lower().strip() == 'sendfile':
+            filename = input("Enter the filename: ")
+            f = open(filename,'rb')
+            l = f.read(1024)
+            while (l):
+                client_socket.send(l)
+                print('Sent ',repr(l))
+                l = f.read(1024)
+            f.close()
+        else:
+            client_socket.send(message.encode())
 
 def start_client():
     host = '192.168.0.204'  # Replace with the IP address of the machine running the server script

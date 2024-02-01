@@ -3,11 +3,20 @@ import threading
 
 def receive_message(conn):
     while True:
-        data = conn.recv(1024).decode()
-        if not data or data.lower() == 'exit':
+        data = conn.recv(1024)
+        if not data or data.lower() == b'exit':
             print("User has exited the chat.")
             break
-        print("Received from user: " + str(data))
+        with open('received_file', 'wb') as f:
+            print('file opened')
+            while True:
+                print('receiving data...')
+                data = conn.recv(1024)
+                print(f'data={data}')
+                if not data:
+                    break
+                f.write(data)
+    print('Successfully got the file')
 
 def send_message(conn):
     while True:
