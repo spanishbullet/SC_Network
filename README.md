@@ -7,8 +7,10 @@ To use this software, you need to start both the server and the client. Here’s
     Server: Run the server script on the machine that you want to act as the server. The server will start listening for incoming connections on port 5000. When a client connects, the server will start two threads: one for receiving messages from the client and another for sending messages to the client.
 
     Client: Run the client script on the machine that you want to act as the client. The client will connect to the server using the server’s IP address and port number. Similar to the server, the client will also start two threads: one for receiving messages from the server and another for sending messages to the server.
-    
-The purpose of writing this software is to demonstrate a basic implementation of a chat application using a client-server model. It provides a simple way for two parties to communicate with each other over a network. The software also includes the ability to send files from one party to another. However, please note that this is a basic implementation and might not be suitable for a production environment. It lacks features like support for multiple clients, robust error handling, and security measures. If you plan to use this in a real-world application, you might want to consider adding these features
+
+Once connected the server and client can send simple text back and forth by typing the desired text into the terminal and pressing enter. That text will apear in the terminal on the other end of the connection. Either the server or the client can type 'sendfile' and press enter to send a file. The user will be prompted to enter the file name and press enter. The file entered will be sent as text to the other end of the connection and will apear as a message and a new file will be created on the machine receiveing the file. Similairly either machine can type 'quit' and press enter. This will close the connection and notify the other end that the connection was terminated by the other machine.
+
+The purpose of writing this software is to demonstrate a basic implementation of a chat application using a client-server model. It provides a simple way for two parties to communicate with each other over a network. The software also includes the ability to send files from one party to another. However, please note that this is a basic implementation and might not be suitable for a production environment. It lacks features like support for multiple clients, robust error handling, and security measures. If you plan to use this in a real-world application, you might want to consider adding these features.
 
 {Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the software running (you will need to show two pieces of software running and communicating with each other) and a walkthrough of the code.}
 
@@ -35,11 +37,11 @@ The provided code uses two built-in Python libraries: socket and threading. The 
 * [Python Download](https://www.python.org/downloads/)
 * [Python Sockets](https://docs.python.org/3/library/socket.html)
 * [Python Threading](https://docs.python.org/3/library/threading.html)
-* [VS Code](http://url.link.goes.here)
+* [VS Code](https://code.visualstudio.com/download)
+* [TCP](https://www.fortinet.com/resources/cyberglossary/tcp-ip#:~:text=Transmission%20Control%20Protocol%20(TCP)%20is,data%20and%20messages%20over%20networks.)
 
 # Future Work
 
-* File upload and download instead of just file reading.
 * Ability to connect and message more than one client at a time.
 * Improve asyncronous messaging to be faster.
 * Improve error handling.
