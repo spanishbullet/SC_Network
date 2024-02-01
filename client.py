@@ -9,10 +9,13 @@ def start_client():
 
     message = input(" -> ")
 
-    while message.lower().strip() != 'bye':
+    while message.lower().strip() != 'exit':
         client_socket.send(message.encode())
         data = client_socket.recv(1024).decode()
 
+        if not data or data.lower() == 'exit':
+            print('Server has exited the chat.')
+            break
         print('Received from server: ' + data)
 
         message = input(" -> ")

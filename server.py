@@ -13,12 +13,17 @@ def start_server():
 
     while True:
         data = conn.recv(1024).decode()
-        if not data:
+        if not data or data.lower() == 'exit':
+            print("User has exited the chat.")
             break
         print("Received from user: " + str(data))
 
         data = input(' -> ')
+        if data.lower() == 'exit':
+            conn.send(data.encode())
+            break
         conn.send(data.encode())
+
 
     conn.close()
 
