@@ -1,7 +1,24 @@
 import socket
+import threading
+
+def receive_message(conn):
+    while True:
+        data = conn.recv(1024).decode()
+        if not data or data.lower() == 'exit':
+            print("User has exited the chat.")
+            break
+        print("Received from user: " + str(data))
+
+def send_message(conn):
+    while True:
+        data = input(' -> ')
+        if data.lower() == 'exit':
+            conn.send(data.encode())
+            break
+        conn.send(data.encode())
 
 def start_server():
-    host = '0.0.0.0'  # This will allow connections on all network interfaces
+    host = '0.0.0.0'
     port = 5000
 
     server_socket = socket.socket()
@@ -11,21 +28,8 @@ def start_server():
     conn, address = server_socket.accept()
     print("Connection from: " + str(address))
 
-    while True:
-        data = conn.recv(1024).decode()
-        if not data or data.lower() == 'exit':
-            print("User has exited the chat.")
-            break
-        print("Received from user: " + str(data))
-
-        data = input(' -> ')
-        if data.lower() == 'exit':
-            conn.send(data.encode())
-            break
-        conn.send(data.encode())
-
-
-    conn.close()
+    threading.Thread(target=receive_message, args=(conn,)).start()
+    threading.Thread(target=send_message, args=(conn,)).start()
 
 if __name__ == '__main__':
     start_server()
