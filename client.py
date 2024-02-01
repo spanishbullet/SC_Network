@@ -1,13 +1,24 @@
 import socket
 import threading
 
-def receive_message(client_socket):
+def send_message(conn):
     while True:
-        data = client_socket.recv(1024).decode()
-        if not data or data.lower() == 'exit':
-            print('Server has exited the chat.')
+        data = input(' -> ')
+        if data.lower() == 'exit':
+            conn.send(data.encode())
             break
-        print('Received from server: ' + data)
+        elif data.lower() == 'sendfile':
+            filename = input("Enter the filename: ")
+            f = open(filename,'rb')
+            l = f.read(1024)
+            while (l):
+                conn.send(l)
+                print('Sent ',repr(l))
+                l = f.read(1024)
+            f.close()
+        else:
+            conn.send(data.encode())
+
 
 def send_message(client_socket):
     while True:

@@ -24,7 +24,18 @@ def send_message(conn):
         if data.lower() == 'exit':
             conn.send(data.encode())
             break
-        conn.send(data.encode())
+        elif data.lower() == 'sendfile':
+            filename = input("Enter the filename: ")
+            f = open(filename,'rb')
+            l = f.read(1024)
+            while (l):
+                conn.send(l)
+                print('Sent ',repr(l))
+                l = f.read(1024)
+            f.close()
+        else:
+            conn.send(data.encode())
+
 
 def start_server():
     host = '0.0.0.0'
